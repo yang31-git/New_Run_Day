@@ -43,9 +43,6 @@ public class LoginFrame extends JFrame {
         userField2.setBorder(BorderFactory.createLoweredBevelBorder());
         userField2.setOpaque(false);
         this.add(userField2);
-
-
-
 //登录按钮
         Login = new JButton("登录");
         Login.setBounds(45,350,60,36);
@@ -53,18 +50,17 @@ public class LoginFrame extends JFrame {
         //Login.setForeground(Color.BLUE);//前景色
         //绑定登录按钮的事件监听
         Login.addActionListener(new ActionListener() {//ActionListener alt /
-
             @Override
             public void actionPerformed(ActionEvent e) {
                 //System.out.println("点击登录按钮");
                 //获取用户名输入框的内容
                 String userName = userField.getText();
                 String passWord = userField2.getText();//横杠原因：方法太老了，不推荐用
-                if("Huey".equals(userName) && "123".equals(passWord)){
+                if("1".equals(userName) && "1".equals(passWord)){
                     //登录成功
                     JOptionPane.showMessageDialog(null, "欢迎"+userName+"来到天天酷跑游戏");
                     //跳转到下一界面
-
+                    new MainFrame();
                     //关闭当前界面
                     dispose();
                 }else if("".equals(userName) || "".equals(passWord)){
@@ -73,17 +69,14 @@ public class LoginFrame extends JFrame {
                 }else{
                     JOptionPane.showMessageDialog(null, "用户名 / 密码输入错误，请重新输入！");
                 }
-
             }
         });
         this.add(Login);
-
 //取消按钮
         Cancel = new JButton("取消");
         Cancel.setBounds(135,350,60,36);
         this.add(Cancel);
         Cancel.addActionListener(new ActionListener() {
-
             @Override
             public void actionPerformed(ActionEvent e) {
                 // TODO Auto-generated method stub
@@ -96,12 +89,12 @@ public class LoginFrame extends JFrame {
         this.add(panel);
 
         //设置登录界面的基本属性
-        this.setSize(900,530);
+        this.setSize(800,500);
         this.setLocationRelativeTo(null);//位置居中
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setUndecorated(true);
         //设置窗体的Logo图标
-        this.setIconImage(new ImageIcon("Image/115.png").getImage());//存储图片
+        //this.setIconImage(new ImageIcon("E:/RunDay Program/web/WEB-INF/Image/loading1.jpg").getImage());//存储图片
         this.setVisible(true);
     }
     //测试用的main方法       main + Alt /
@@ -114,7 +107,7 @@ public class LoginFrame extends JFrame {
         public LoginPanel() {//-----alt / 回车 构造方法    在{后双击,显示作用域
             //读取图片文件，赋值给background变量
             try {//-----虽然不大可能，但也做好吃饭噎死的准备
-                background = ImageIO.read(new File("E:/RunDay Program/web/WEB-INF/Image/login.jpg"));//----read参数为File类型
+                background = ImageIO.read(new File("E:/RunDay Program/web/WEB-INF/Image/login.bmp"));//----read参数为File类型
             } catch (IOException e) {//-------捕获异常信息
                 // 打印异常日志信息
                 e.printStackTrace();
@@ -125,7 +118,7 @@ public class LoginFrame extends JFrame {
         public void paint(Graphics g) {
             super.paint(g);
             //绘制背景图片
-            g.drawImage(background, 0, 0,900,530, null);//900,530为宽高
+            g.drawImage(background, 0, 0,800,600, null);
         }
     }
 }
